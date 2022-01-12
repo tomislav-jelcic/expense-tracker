@@ -11,6 +11,8 @@ jobs:
         working-directory: ./server
 
     steps:
+    - name: asa
+      run: echo $PWD
     - uses: actions/checkout@v2
     - name: Setup dotnet
       uses: actions/setup-dotnet@v1
