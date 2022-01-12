@@ -15,7 +15,7 @@ public class Group : IEntity
         Name = name;
     }
 
-    public void AddUserToGroup(string userId)
+    public void AddUserToGroup(int userId)
     {
         GroupUsers ??= new List<UserGroup>();
         var newMember = new UserGroup(Id, userId);

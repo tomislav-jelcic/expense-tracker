@@ -11,13 +11,14 @@ public class UserGroupMapping : IEntityTypeConfiguration<UserGroup>
         builder.ToTable("user_groups");
 
         builder.HasOne(x => x.Group)
-        .WithMany(x => x.GroupUsers);
+        .WithMany(x => x.GroupUsers)
+        .HasForeignKey(x => x.GroupId);
 
         builder.HasOne(x => x.User)
-        .WithMany(x => x.Groups);
+        .WithMany(x => x.Groups)
+        .HasForeignKey(x => x.UserId);
 
-        builder.HasKey(x => new
-        {
+        builder.HasKey(x => new {
             x.GroupId,
             x.UserId
         });
