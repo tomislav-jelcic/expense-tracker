@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: cd server
       - run: dotnet build
   test:
     runs-on: ubuntu-latest
