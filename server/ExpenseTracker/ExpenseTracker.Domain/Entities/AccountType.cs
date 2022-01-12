@@ -1,9 +1,8 @@
-﻿namespace ExpenseTracker.Domain.Entities
+﻿namespace ExpenseTracker.Domain.Entities;
+
+public enum AccountType
 {
-    public enum AccountType
-    {
-        Transaction = 0,
-        Savings = 1,
-        Investment = 2
-    }
+    Transaction = 0,
+    Savings = 1,
+    Investment = 2
 }

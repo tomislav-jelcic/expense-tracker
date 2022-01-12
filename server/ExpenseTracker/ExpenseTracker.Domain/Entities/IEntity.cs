@@ -1,7 +1,6 @@
-namespace ExpenseTracker.Domain.Entities
+namespace ExpenseTracker.Domain.Entities;
+
+public interface IEntity
 {
-    public interface IEntity
-    {
-        public int Id { get; }
-    }
+    public int Id { get; }
 }

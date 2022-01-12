@@ -1,9 +1,8 @@
-namespace ExpenseTracker.Domain.Entities
+namespace ExpenseTracker.Domain.Entities;
+
+public enum TransactionType
 {
-    public enum TransactionType
-    {
-        Expenditure = 0,
-        Transfer = 1,
-        Income = 2
-    }
+    Expenditure = 0,
+    Transfer = 1,
+    Income = 2
 }
