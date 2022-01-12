@@ -4,12 +4,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: build
       - uses: actions/checkout@v2
-      - run: dotnet build
-        with:
-          path: ./server
+      - run: dotnet build  
+        working-directory: ./server
   test:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: test
       - run: dotnet test
+        working-directory: ./server
