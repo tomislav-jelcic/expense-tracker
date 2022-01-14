@@ -1,17 +1,46 @@
 version: "3.8"
 services: 
-  database:
+  expense-tracker-db:
    image: postgres
    ports:
     - "5432:5432"
    restart: always
    volumes:
-      - database-data:/var/lib/postgresql/data
+      - expense-tracker-data:/var/lib/postgresql/data
    environment:
       - POSTGRES_USER=expense_tracker
       - POSTGRES_PASSWORD=expense_tracker
       - POSTGRES_DB=expense_tracker
+  
+  authentication-db:
+    image: postgres
+    ports:
+      - "5433:5433"
+    restart: always
+    volumes:
+        - authentication-data:/var/lib/postgresql/data
+    environment:
+        - POSTGRES_USER=keycloak
+        - POSTGRES_PASSWORD=keycloak
+        - POSTGRES_DB=keycloak
+
+  authentication:
+    image: quay.io/keycloak/keycloak:16.1.0
+    ports:
+      - "5500:8080"
+    environment:
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=authentication-db
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_SCHEMA=public
+      - DB_PASSWORD=keycloak
+      - KEYCLOAK_USER=administrator
+      - KEYCLOAK_PASSWORD=administrator
+    depends_on:
+      - authentication-db
    
 volumes:
-  database-data:
+  expense-tracker-data:
+  authentication-data:
   
