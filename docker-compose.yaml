@@ -1,0 +1,17 @@
+version: "3.8"
+services: 
+  database:
+   image: postgres
+   ports:
+    - "5432:5432"
+   restart: always
+   volumes:
+      - database-data:/var/lib/postgresql/data
+   environment:
+      - POSTGRES_USER=expense_tracker
+      - POSTGRES_PASSWORD=expense_tracker
+      - POSTGRES_DB=expense_tracker
+   
+volumes:
+  database-data:
+  
