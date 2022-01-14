@@ -2,7 +2,7 @@ using ExpenseTracker.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ExpenseTracker.Data.EntityMappings;
+namespace ExpenseTracker.Persistence.EntityMappings;
 public class AccountMapping : IEntityTypeConfiguration<Account>
 {
     public void Configure(EntityTypeBuilder<Account> builder)

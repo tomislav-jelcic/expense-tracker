@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace ExpenseTracker.Application.Definitions.Persistence;
+namespace ExpenseTracker.Application.Persistence;
 
 public interface IRepository<T> where T : class
 {

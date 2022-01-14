@@ -1,4 +1,4 @@
-namespace ExpenseTracker.Application.Definitions.Persistence;
+namespace ExpenseTracker.Application.Persistence;
 
 public interface IUnitOfWork
 {

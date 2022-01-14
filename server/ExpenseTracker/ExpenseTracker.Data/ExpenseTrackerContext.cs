@@ -1,8 +1,7 @@
-using ExpenseTracker.Data.EntityMappings;
 using ExpenseTracker.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ExpenseTracker.Data;
+namespace ExpenseTracker.Persistence;
 public class ExpenseTrackerContext : DbContext
 {
     public DbSet<Account> Accounts { get; set; } = default!;

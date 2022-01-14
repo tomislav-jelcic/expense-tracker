@@ -1,4 +1,4 @@
-namespace ExpenseTracker.Domain;
+namespace ExpenseTracker.Domain.ValueObjects;
 
 public abstract class ValueObject
 {

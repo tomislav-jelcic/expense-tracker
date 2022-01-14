@@ -1,6 +1,6 @@
 using ExpenseTracker.Domain.Entities;
 
-namespace ExpenseTracker.Application.Definitions.Persistence;
+namespace ExpenseTracker.Application.Persistence;
 
 public interface IGroupRepository : IRepository<Group>
 {

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace ExpenseTracker.Data;
+namespace ExpenseTracker.Persistence;
 public class ExpenseTrackerContextFactory : IDesignTimeDbContextFactory<ExpenseTrackerContext>
 {
     public ExpenseTrackerContext CreateDbContext(string[] args)
