@@ -1,4 +1,5 @@
 using ExpenseTracker.Domain.Entities;
+using ExpenseTracker.Persistence.EntityMappings;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseTracker.Persistence;
