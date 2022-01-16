@@ -7,8 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Build server app
-      run: cd ./server/ExpenseTracker
+    - name: Checkout
     - uses: actions/checkout@v2
     - name: Setup dotnet
       uses: actions/setup-dotnet@v1
@@ -16,19 +15,23 @@ jobs:
         dotnet-version: '6.0.x'
     - name: Install dependencies
       run: dotnet restore
+      working-directory: ./server/ExpenseTracker
     - name: Build
       run: dotnet build
+      working-directory: ./server/ExpenseTracker
     - name: Test with the dotnet CLI
       run: dotnet 
-    - name: Build client web app
-      run: cd ../../clients/web/expense-tracker
+      working-directory: ./server/ExpenseTracker
     - name: Install nodejs
       uses: actions/setup-node@v1
       with:
         node-version: '16.3.x'
     - name: Install packages
       run: npm ci
+      working-directory: ./clients/web/expense-tracker
     - name: Build react app
       run: npm run build
+      working-directory: ./clients/web/expense-tracker
     - name: Test react app
       run: npm run test
+      working-directory: ./clients/web/expense-tracker
