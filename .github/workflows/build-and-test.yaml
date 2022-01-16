@@ -27,6 +27,7 @@ jobs:
       with:
         node-version: '16.3.x'
     - name: Install packages
+      working-directory: ./clients/web/expense-tracker
       run: npm ci
     - name: Build react app
       run: npm run build
