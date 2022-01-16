@@ -11,6 +11,8 @@ jobs:
         working-directory: ./server/ExpenseTracker
 
     steps:
+    - name: Build server app
+      run: cd ./server/ExpenseTracker
     - uses: actions/checkout@v2
     - name: Setup dotnet
       uses: actions/setup-dotnet@v1
@@ -21,17 +23,16 @@ jobs:
     - name: Build
       run: dotnet build
     - name: Test with the dotnet CLI
-      run: dotnet test
+      run: dotnet 
+    - name: Build client web app
+      run: cd ../../clients/web/expense-tracker
     - name: Install nodejs
       uses: actions/setup-node@v1
       with:
         node-version: '16.3.x'
     - name: Install packages
-      working-directory: ./clients/web/expense-tracker
       run: npm ci
     - name: Build react app
-      working-directory: ./clients/web/expense-tracker
       run: npm run build
     - name: Test react app
-      working-directory: ./clients/web/expense-tracker
       run: npm run test
