@@ -27,11 +27,11 @@ jobs:
       with:
         node-version: '16.3.x'
     - name: Install packages
-      run: npm ci
+      run: pnpm ci
       working-directory: ./clients/web/expense-tracker
     - name: Build react app
-      run: npm run build
+      run: pnpm run build
       working-directory: ./clients/web/expense-tracker
     - name: Test react app
-      run: npm run test
+      run: pnpm run test
       working-directory: ./clients/web/expense-tracker
