@@ -30,6 +30,8 @@ jobs:
       working-directory: ./clients/web/expense-tracker
       run: npm ci
     - name: Build react app
+      working-directory: ./clients/web/expense-tracker
       run: npm run build
     - name: Test react app
+      working-directory: ./clients/web/expense-tracker
       run: npm run test
