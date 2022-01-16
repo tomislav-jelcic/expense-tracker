@@ -2,6 +2,9 @@
   "name": "expense-tracker",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "mini-css-extract-plugin": "2.4.5"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -34,8 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "overrides": {
-    "mini-css-extract-plugin": "2.4.5"
   }
 }
