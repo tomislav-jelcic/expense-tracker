@@ -22,3 +22,13 @@ jobs:
       run: dotnet build
     - name: Test with the dotnet CLI
       run: dotnet test
+    - name: Install nodejs
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16.3.x'
+    - name: Install packages
+      run: npm ci
+    - name: Build react app
+      run: npm run build
+    - name: Test react app
+      run: npm run test
