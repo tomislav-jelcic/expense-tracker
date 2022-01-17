@@ -5,7 +5,7 @@ using ExpenseTracker.Application.Persistence;
 using ExpenseTracker.Domain.Entities;
 using ExpenseTracker.Domain.ValueObjects;
 
-namespace ExpenseTracker.Application.Handlers.Users;
+namespace ExpenseTracker.Application.Handlers.Users.Commands;
 
 public class CreateUserAccountRequestDto
 {
