@@ -3,11 +3,6 @@ using ExpenseTracker.Application.Dtos;
 using ExpenseTracker.Application.Exceptions;
 using ExpenseTracker.Application.Persistence;
 using ExpenseTracker.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpenseTracker.Application.Handlers.Users.Queries;
 
