@@ -6,29 +6,35 @@ import Nav from "./components/Nav";
 import WelcomePage from "./pages/Homepage";
 import SecuredPage from "./pages/SecuredPage";
 import PrivateRoute from "./helpers/PrivateRoute";
-import Sidebar from './components/Sidebar';
+import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
   return (
     <React.Fragment>
       <ReactKeycloakProvider authClient={keycloak}>
-        <Nav />
-        <div className="flex overflow-hidden bg-white h-full">
-          <BrowserRouter>
-            <Sidebar />
-            <Routes>
-              <Route path="/" element={<WelcomePage />} />
-              <Route
-                path="/secured"
-                element={
-                  <PrivateRoute>
-                    <SecuredPage />
-                  </PrivateRoute>
-                }
-              />
-            </Routes>
-          </BrowserRouter>
-        </div>
+        <BrowserRouter>
+          <Nav />
+          <div className="grid grid-cols-12 overflow-hidden bg-white h-full pt-5">
+            <div className="col-span-2">
+              <Sidebar />
+            </div>
+            <div className="col-span-10">
+              <div className="grid grid-cols-12">
+                <Routes>
+                  <Route path="/" element={<WelcomePage />} />
+                  <Route
+                    path="/secured"
+                    element={
+                      <PrivateRoute>
+                        <SecuredPage />
+                      </PrivateRoute>
+                    }
+                  />
+                </Routes>
+              </div>
+            </div>
+          </div>
+        </BrowserRouter>
       </ReactKeycloakProvider>
     </React.Fragment>
   );

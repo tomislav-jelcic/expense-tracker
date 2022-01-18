@@ -11,8 +11,8 @@ interface Props {
 
 const SidebarItem: React.FC<Props> = ({ name, to, iconName }) => {
     return (
-        <li className="text-gray flex hover:bg-gray-light rounded-lg hover:text-black text-l">
-            <Link to={to} className="p-2">
+        <li className="text-gray hover:bg-gray-light rounded-lg hover:text-black text-l pb-2 pt-2">
+            <Link to={to}>
                 <Icon className="align-middle">{iconName}</Icon>
                 <span className="ml-2 align-middle">{name}</span>
             </Link>
