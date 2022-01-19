@@ -6,7 +6,7 @@ using ExpenseTracker.Domain.Entities;
 
 namespace ExpenseTracker.Application.Handlers.Users.Queries;
 
-public class UserAccountDto
+public class UserAccountResponseDto
 {
     public int Id { get; set; }
     public string OwnerId { get; set; } = default!;
@@ -15,9 +15,9 @@ public class UserAccountDto
     public MoneyResponseDto Balance { get; set; } = default!;
 }
 
-public record GetAccounts(int OwnerId) : IQuery<IReadOnlyCollection<UserAccountDto>>;
+public record GetAccounts(int OwnerId) : IQuery<IReadOnlyCollection<UserAccountResponseDto>>;
 
-public class GetAccountsHandler : IQueryHandler<GetAccounts, IReadOnlyCollection<UserAccountDto>>
+public class GetAccountsHandler : IQueryHandler<GetAccounts, IReadOnlyCollection<UserAccountResponseDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -28,7 +28,7 @@ public class GetAccountsHandler : IQueryHandler<GetAccounts, IReadOnlyCollection
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IReadOnlyCollection<UserAccountDto>> Handle(GetAccounts request, CancellationToken ct)
+    public async Task<IReadOnlyCollection<UserAccountResponseDto>> Handle(GetAccounts request, CancellationToken ct)
     {
         var userId = request.OwnerId;
 
@@ -39,6 +39,6 @@ public class GetAccountsHandler : IQueryHandler<GetAccounts, IReadOnlyCollection
 
         var userAccounts = await _unitOfWork.Accounts.FilterAsync(x => x.OwnerId == userId, ct);
 
-        return _mapper.Map<IReadOnlyCollection<UserAccountDto>>(userAccounts);
+        return _mapper.Map<IReadOnlyCollection<UserAccountResponseDto>>(userAccounts);
     }
 }
