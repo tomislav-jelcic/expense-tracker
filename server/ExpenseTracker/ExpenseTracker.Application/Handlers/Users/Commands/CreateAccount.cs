@@ -1,5 +1,5 @@
 using ExpenseTracker.Application.Definitions;
-using ExpenseTracker.Application.Dtos;
+using ExpenseTracker.Application.Dtos.Account;
 using ExpenseTracker.Application.Exceptions;
 using ExpenseTracker.Application.Persistence;
 using ExpenseTracker.Domain.Entities;
@@ -7,23 +7,7 @@ using ExpenseTracker.Domain.ValueObjects;
 
 namespace ExpenseTracker.Application.Handlers.Users.Commands;
 
-public class CreateUserAccountRequestDto
-{
-    public string Name { get; set; } = default!;
-    public AccountType Type { get; set; }
-    public MoneyRequestDto Balance { get; set; } = default!;
-}
-public class CreateUserAccountResponseDto
-{
-    public int Id { get; set; }
-    public string OwnerId { get; set; } = default!;
-    public string Name { get; set; } = default!;
-    public AccountType Type { get; set; } = default!;
-    public MoneyResponseDto Balance { get; set; } = default!;
-}
-public record CreateAccount(int OwnerId, CreateUserAccountRequestDto Payload) : ICommand<CreateUserAccountResponseDto>;
-
-public class CreateAccountHandler : ICommandHandler<CreateAccount, CreateUserAccountResponseDto>
+public class CreateAccountHandler : ICommandHandler<CreateAccount, AccountResponseDto>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -34,7 +18,7 @@ public class CreateAccountHandler : ICommandHandler<CreateAccount, CreateUserAcc
         _mapper = mapper;
     }
 
-    public async Task<CreateUserAccountResponseDto> Handle(CreateAccount request, CancellationToken cancellationToken)
+    public async Task<AccountResponseDto> Handle(CreateAccount request, CancellationToken cancellationToken)
     {
 
         var balance = _mapper.Map<Money>(request.Payload.Balance);
@@ -51,6 +35,6 @@ public class CreateAccountHandler : ICommandHandler<CreateAccount, CreateUserAcc
 
         var newAccount = await _unitOfWork.Accounts.GetAsync(account.Id, cancellationToken);
 
-        return _mapper.Map<CreateUserAccountResponseDto>(newAccount!);
+        return _mapper.Map<AccountResponseDto>(newAccount!);
     }
 }
