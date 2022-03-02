@@ -1,6 +1,7 @@
 using ExpenseTracker.Application.Definitions;
 using ExpenseTracker.Application.Dtos.Account;
 using ExpenseTracker.Application.Exceptions;
+using ExpenseTracker.Application.Operations.Users.Commands;
 using ExpenseTracker.Application.Persistence;
 using ExpenseTracker.Domain.Entities;
 using ExpenseTracker.Domain.ValueObjects;
@@ -18,11 +19,11 @@ public class CreateAccountHandler : ICommandHandler<CreateAccount, AccountRespon
         _mapper = mapper;
     }
 
-    public async Task<AccountResponseDto> Handle(CreateAccount request, CancellationToken cancellationToken)
+    public async Task<AccountResponseDto> HandleAsync(CreateAccount request)
     {
 
         var balance = _mapper.Map<Money>(request.Payload.Balance);
-        var owner = await _unitOfWork.Users.GetAsync(request.OwnerId, cancellationToken);
+        var owner = await _unitOfWork.Users.GetAsync(request.OwnerId);
 
         if (owner == null)
             throw new BadArgumentException("Specified user, for which the account is being made, has not been found");
@@ -31,9 +32,9 @@ public class CreateAccountHandler : ICommandHandler<CreateAccount, AccountRespon
 
         _unitOfWork.Accounts.Add(account);
 
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
+        await _unitOfWork.SaveChangesAsync();
 
-        var newAccount = await _unitOfWork.Accounts.GetAsync(account.Id, cancellationToken);
+        var newAccount = await _unitOfWork.Accounts.GetAsync(account.Id);
 
         return _mapper.Map<AccountResponseDto>(newAccount!);
     }

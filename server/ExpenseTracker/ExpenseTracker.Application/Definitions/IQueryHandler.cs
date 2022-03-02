@@ -13,5 +13,5 @@ public interface IQueryHandler<in TQuery, TResult>
     /// <param name="request"></param>
     /// <param name="ct"></param>
     /// <returns></returns>
-    Task<TResult> Handle(TQuery request, CancellationToken ct);
+    Task<TResult> HandleAsync(TQuery request, CancellationToken ct);
 }

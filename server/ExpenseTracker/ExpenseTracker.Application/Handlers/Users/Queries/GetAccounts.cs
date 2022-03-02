@@ -1,6 +1,7 @@
 ﻿using ExpenseTracker.Application.Definitions;
 using ExpenseTracker.Application.Dtos.Account;
 using ExpenseTracker.Application.Exceptions;
+using ExpenseTracker.Application.Operations.Users.Queries;
 using ExpenseTracker.Application.Persistence;
 
 namespace ExpenseTracker.Application.Handlers.Users.Queries;
@@ -16,7 +17,7 @@ public class GetAccountsHandler : IQueryHandler<GetAccounts, IReadOnlyCollection
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IReadOnlyCollection<AccountResponseDto>> Handle(GetAccounts request, CancellationToken ct)
+    public async Task<IReadOnlyCollection<AccountResponseDto>> HandleAsync(GetAccounts request, CancellationToken ct)
     {
         var userId = request.OwnerId;
 
