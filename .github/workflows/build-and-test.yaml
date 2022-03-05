@@ -32,6 +32,3 @@ jobs:
       - name: Build react app
         run: npm run build
         working-directory: ./clients/web/expense-tracker
-      - name: Test react app
-        run: npm run test
-        working-directory: ./clients/web/expense-tracker
