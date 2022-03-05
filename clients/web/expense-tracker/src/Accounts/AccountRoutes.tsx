@@ -4,10 +4,6 @@ import { AccountsRoot } from "./AccountsRoot";
 
 export const AccountRootRoute = '/accounts';
 
-
-const AccountRoutes = {
-};
-
 export const AccountRouter = () => {
     return (
         <Routes>
