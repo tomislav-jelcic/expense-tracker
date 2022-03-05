@@ -21,9 +21,9 @@ function App() {
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                   </button>
-                  <a className="flex items-center text-xl font-bold">
+                  <div className="flex items-center text-xl font-bold">
                     <span className="text-blue-800">Logo</span>
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
