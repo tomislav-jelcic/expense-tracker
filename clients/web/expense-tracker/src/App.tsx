@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 import { BrowserRouter } from "react-router-dom";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Sidebar from "./Sidebar/Sidebar";
 import keycloak, { initOptions } from "./keycloack";
 import { Loading } from "./components/Loading";
 import { Router } from "./Routes";
