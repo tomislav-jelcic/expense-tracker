@@ -1,15 +1,16 @@
 import { useKeycloak } from "@react-keycloak/web";
+import { Outlet, Navigate } from "react-router-dom";
 
-const PrivateRoute: React.FC<any> = props  => {
- const { keycloak } = useKeycloak();
+const PrivateRoute: React.FC<any> = props => {
+    const { keycloak } = useKeycloak();
 
-    const isLoggedIn = keycloak.authenticated;
-    
+    const isLoggedIn = keycloak?.authenticated;
+
     if (isLoggedIn)
-        return props.children;
-    
+        return <Outlet />;
 
- return isLoggedIn ? props.children : null;
+    keycloak.login();
+    return <></>
 };
 
 export default PrivateRoute;
