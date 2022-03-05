@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AccountRootRoute } from "../Accounts/AccountRoutes";
 import SidebarItem from "./SidebarItem";
-
+import { MobileSidebarShownContext } from "../Contexts/MobileSidebarShownContext";
 
 const Sidebar = () => {
-    return <div className="flex flex-col justify-between mt-4">
+    const sidebarContext = useContext(MobileSidebarShownContext);
+
+    let hiddenClass = sidebarContext.shown ? "" : "hidden";
+
+    return <div className={`flex flex-col justify-between mt-4 ${hiddenClass}`} >
         <aside>
             <ul>
                 <SidebarItem iconName="dashboard" name="Dashboard" to="" />
