@@ -1,10 +1,10 @@
 import React from "react";
+import { Loading } from "./components/Loading";
+import { Router } from "./Routes";
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 import { BrowserRouter } from "react-router-dom";
 import Sidebar from "./Sidebar/Sidebar";
 import keycloak, { initOptions } from "./keycloack";
-import { Loading } from "./components/Loading";
-import { Router } from "./Routes";
 
 function App() {
   return (

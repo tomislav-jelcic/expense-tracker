@@ -1,5 +1,5 @@
 import React from "react";
-import { AccountRootRoute } from "../../Accounts/AccountRoutes";
+import { AccountRootRoute } from "../Accounts/AccountRoutes";
 import SidebarItem from "./SidebarItem";
 
 
