@@ -1,11 +1,9 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { AccountRouter, AccountRootRoute } from "./Accounts/AccountRoutes";
 import PrivateRoute from "./helpers/PrivateRoute";
 
 const RootRoute = "/";
-
-
 
 export const Router = () => {
     return (

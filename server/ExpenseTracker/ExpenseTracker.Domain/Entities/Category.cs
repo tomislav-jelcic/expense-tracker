@@ -6,9 +6,14 @@ namespace ExpenseTracker.Domain.Entities;
 public class Category : IEntity
 {
     public int Id { get; }
-    public string Name { get; }
+    public string Name { get; private set; }
     public ICollection<Transaction> Transactions { get; } = default!;
     public Category(string name)
+    {
+        Name = name;
+    }
+
+    public void UpdateName(string name)
     {
         Name = name;
     }
