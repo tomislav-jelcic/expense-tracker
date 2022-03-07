@@ -29,10 +29,8 @@ function App() {
                 <Sidebar />
               </MobileSidebarShownContext.Provider>
             </div>
-            <div className="w-full h-full p-4 my-8 overflow-y-auto">
-              <div className="flex items-center justify-center p-16 border-4 border-dotted lg:p-40">
-                <Router />
-              </div>
+            <div className="w-full h-full mx-2 my-8 overflow-y-auto">
+              <Router />
             </div>
           </div>
         </BrowserRouter>
