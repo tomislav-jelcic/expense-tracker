@@ -10,7 +10,7 @@ import { MobileSidebarShownContext } from "./Contexts/MobileSidebarShownContext"
 
 function App() {
 
-  const [shown, setShown] = useState(false);
+  const [shown, setShown] = useState(window.screen.width > 600); // just a hack so the menu stays closed on small screens
   const toggleShown = () => {
     setShown(!shown);
   };
