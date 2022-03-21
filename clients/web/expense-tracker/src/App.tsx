@@ -29,7 +29,7 @@ function App() {
                 <Sidebar />
               </MobileSidebarShownContext.Provider>
             </div>
-            <div className="w-full h-full mx-2 my-8 overflow-y-auto">
+            <div className="w-full h-full mr-2 my-8 overflow-y-auto">
               <Router />
             </div>
           </div>

@@ -29,10 +29,8 @@ new AccountResponseDto({
 
 export const DashboardRoot = () => {
     return (
-        <>
-            <div className="flex flex-row">
-                <AccountList accounts={accounts} />
-            </div>
-        </>
+        <div className="grid grid-cols-6">
+            <AccountList accounts={accounts} />
+        </div>
     )
 }

@@ -6,6 +6,7 @@ module.exports = {
         enhance: "#818cf8",
         textSecondary: "white",
         textPrimary: "#374151",
+        active:"hotpink"
       },
     },
   },

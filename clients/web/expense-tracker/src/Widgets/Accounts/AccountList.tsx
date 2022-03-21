@@ -8,13 +8,13 @@ interface IProps {
 
 export const AccountList: React.FC<IProps> = ({ accounts }: IProps) => {
 
-    return (<div className="flex flex-row sm:flex-col">
+    return (<>
         {accounts.map((account) => {
             return (
-                <div className="px-2 md:pb-2 md:pt-0 sm:py-2">
+                <div className="px-2 sm:pd-2">
                     <AccountWidget account={account} key={account.Id}></AccountWidget>
                 </div>
             )
         })}
-    </div>)
+    </>)
 }
