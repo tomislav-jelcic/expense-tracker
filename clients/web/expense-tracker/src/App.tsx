@@ -21,7 +21,7 @@ function App() {
         <Header name="Expense tracker" onHeaderIconClick={toggleShown} />
         <BrowserRouter>
           <div className="pt-12 lg:flex bg-whitesmoke bg-gray-50">
-            <div className="flex flex-col w-full py-2 overflow-y-auto border-b lg:border-r lg:h-screen lg:w-64 bg-white">
+            <div className="flex flex-col w-full py-2 overflow-y-auto border-b md:border-r md:border-solid md:border-enhance lg:h-screen lg:w-64 bg-white">
               <MobileSidebarShownContext.Provider value={{
                 shown,
                 toggleShown
