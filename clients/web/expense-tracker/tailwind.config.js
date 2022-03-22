@@ -3,10 +3,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        enhance: "#818cf8",
+        enhance: "#E2B6AC",
         textSecondary: "white",
         textPrimary: "#374151",
-        active:"hotpink"
+        active:"#E2D1AC"
       },
     },
   },

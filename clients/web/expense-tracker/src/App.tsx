@@ -20,7 +20,7 @@ function App() {
       <ReactKeycloakProvider authClient={keycloak} initOptions={initOptions} LoadingComponent={<Loading />}>
         <Header name="Expense tracker" onHeaderIconClick={toggleShown} />
         <BrowserRouter>
-          <div className="pt-12 lg:flex">
+          <div className="pt-12 lg:flex bg-whitesmoke bg-gray-50">
             <div className="flex flex-col w-full py-2 overflow-y-auto border-b lg:border-r lg:h-screen lg:w-64 bg-white">
               <MobileSidebarShownContext.Provider value={{
                 shown,

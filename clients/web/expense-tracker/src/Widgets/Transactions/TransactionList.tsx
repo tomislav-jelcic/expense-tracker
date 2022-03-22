@@ -7,9 +7,9 @@ interface IProps {
 
 const TransactionList: React.FC<IProps> = ({ transactions }: IProps) => {
     return (<>
-        <table>
-            <thead>
-                <tr>
+        <table className="table table-fixed overflow-hidden text-center rounded-md w-full font-normal">
+            <thead className="text-md">
+                <tr className="rounded-md border-2 border-solid border-enhance font-light">
                     <th>Id</th>
                     <th>Amount</th>
                     <th>Description</th>
@@ -19,9 +19,17 @@ const TransactionList: React.FC<IProps> = ({ transactions }: IProps) => {
                     <th>Destination account id</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="border-d-2">
                 {transactions.map((transaction: TransactionResponseDto) => {
-                    return <></>
+                    return <tr className="rounded-md hover:bg-enhance hover:text-textSecondary text-md bg-active border-l-2 border-r-2 border-solid border-enhance font-light">
+                        <td>{transaction.Id}</td>
+                        <td>{transaction.Amount.amount} {transaction.Amount.currency}</td>
+                        <td>{transaction.Description}</td>
+                        <td>{transaction.CategoryId}</td>
+                        <td>{transaction.TransactionType}</td>
+                        <td>{transaction.OriginatingAccountId}</td>
+                        <td>{transaction.DestinationAccountId}</td>
+                    </tr>
                 })}
             </tbody>
         </table>

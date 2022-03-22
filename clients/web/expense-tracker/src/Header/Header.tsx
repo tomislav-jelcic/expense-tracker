@@ -8,7 +8,7 @@ type Props = {
 
 export const Header: React.FC<Props> = ({ name, onHeaderIconClick }: Props) => {
     return (
-        <nav className="fixed z-30 w-full bg-white border-b-2 border-indigo-600">
+        <nav className="fixed z-30 w-full bg-gray-50 border-b-2 border-enhance">
             <div className="lg:px-4 sm:px-2 py-3">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-start">
@@ -19,7 +19,7 @@ export const Header: React.FC<Props> = ({ name, onHeaderIconClick }: Props) => {
                             </svg>
                         </button>
                         <div className="flex items-center text-xl font-bold">
-                            <span className="text-blue-800">{name}</span>
+                            <span className="text-primary">{name}</span>
                         </div>
                     </div>
                 </div>

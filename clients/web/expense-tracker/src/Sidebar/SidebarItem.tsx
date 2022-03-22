@@ -10,10 +10,10 @@ interface Props {
 
 const SidebarItem: React.FC<Props> = ({ name, to, iconName }) => {
     return (
-        <li className="hover:bg-enhance text-textPrimary hover:text-textSecondary rounded-lg my-2 active:bg-textPrimary">
+        <li className="hover:bg-enhance text-textPrimary hover:text-textSecondary rounded-lg my-2 active:bg-textPrimary font-medium">
             <NavLink style={({ isActive }) => {
                 return {
-                    backgroundColor: isActive ? "hotpink" : ""
+                    backgroundColor: isActive ? "#E2ACBC" : ""
                 };
             }}
                 className="flex items-center px-3 py-3 rounded-md" to={to}>
