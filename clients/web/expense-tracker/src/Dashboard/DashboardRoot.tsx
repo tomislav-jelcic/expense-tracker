@@ -4,7 +4,7 @@ import { AccountType } from "../domain/models/account/AccountType";
 import { MoneyResponseDto } from "../domain/models/money/MoneyResponseDto";
 import { TransactionResponseDto } from "../domain/models/transaction/TransactionResponseDto";
 import { TransactionType } from "../domain/models/transaction/TransactionType";
-import { AccountList } from "../Widgets/Accounts/AccountList";
+import { AccountWidgetsList } from "../Widgets/Accounts/AccountWidgetsList";
 import TransactionList from "../Widgets/Transactions/TransactionList";
 
 
@@ -84,7 +84,7 @@ new TransactionResponseDto({
 export const DashboardRoot = () => {
     return (<>
         <div className="grid grid-cols-6 gap-4 px-2">
-            <AccountList accounts={accounts} />
+            <AccountWidgetsList accounts={accounts} />
             <div className="col-span-6 mt-2">
                 <TransactionList transactions={transactions} />
             </div>
