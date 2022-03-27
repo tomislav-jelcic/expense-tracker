@@ -1,6 +1,8 @@
+using Elastic.Apm.NetCoreAll;
 using Serilog;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication
+    .CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("appsettings.json");
 
@@ -25,6 +27,8 @@ if (!app.Environment.IsDevelopment()) {
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseAllElasticApm(builder.Configuration);
 
 app.UseStaticFiles();
 
