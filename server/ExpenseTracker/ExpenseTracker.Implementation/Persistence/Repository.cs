@@ -26,7 +26,7 @@ public class Repository<T> : IRepository<T> where T : class, IEntity
     /// Retrieves all entities of a given type
     /// </summary>
     /// <returns></returns>
-    public async Task<IReadOnlyCollection<T>> GetAllAsync(CancellationToken ct = default) => await _context.Set<T>().AsNoTracking().ToListAsync();
+    public async Task<IReadOnlyCollection<T>> GetAllAsync(CancellationToken ct = default) => await _context.Set<T>().AsNoTracking().ToListAsync(ct);
 
     /// <summary>
     /// Adds a new entry of a given entity

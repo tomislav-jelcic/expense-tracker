@@ -1,5 +1,6 @@
 ﻿using ExpenseTracker.Application.Definitions;
 using ExpenseTracker.Application.Dtos.User;
+using ExpenseTracker.Application.Operations.Users.Commands;
 using ExpenseTracker.Application.Persistence;
 using ExpenseTracker.Domain.Entities;
 

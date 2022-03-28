@@ -17,9 +17,9 @@ public class UpdateCategoryHandler : ICommandHandler<UpdateCategory, CategoryRes
         _mapper = mapper;
     }
 
-    public async Task<CategoryResponseDto> HandleAsync(UpdateCategory command)
+    public async Task<CategoryResponseDto> HandleAsync(UpdateCategory command, CancellationToken ct = default)
     {
-        var category = await _unitOfWork.Categories.GetAsync(command.CategoryId);
+        var category = await _unitOfWork.Categories.GetAsync(command.CategoryId, ct);
 
         if (category == null)
             throw new ObjectNotFoundException($"Category with id {command.CategoryId} was not found in the system");
@@ -30,8 +30,8 @@ public class UpdateCategoryHandler : ICommandHandler<UpdateCategory, CategoryRes
 
         await _unitOfWork.SaveChangesAsync();
 
-        category = await _unitOfWork.Categories.GetAsync(command.CategoryId);
+        category = await _unitOfWork.Categories.GetAsync(command.CategoryId, ct);
 
-        return _mapper.Map<CategoryResponseDto>(category);
+        return _mapper.Map<CategoryResponseDto>(category!);
     }
 }

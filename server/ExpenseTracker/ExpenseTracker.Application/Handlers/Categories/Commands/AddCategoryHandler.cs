@@ -16,7 +16,7 @@ public class AddCategoryHandler : ICommandHandler<AddCategory, CategoryResponseD
         _mapper = mapper;
     }
 
-    public async Task<CategoryResponseDto> HandleAsync(AddCategory command)
+    public async Task<CategoryResponseDto> HandleAsync(AddCategory command, CancellationToken ct = default)
     {
         var categoryEntity = new Category(command.Payload.Name);
 
