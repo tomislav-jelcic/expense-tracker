@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ExpenseTracker.Application.Definitions;
+using ExpenseTracker.Implementation.Definitions;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace ExpenseTracker.Implementation.Extensions;
@@ -16,9 +19,17 @@ public static class IServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddExpenseTrackerApplication(this IServiceCollection service)
+    private static IServiceCollection AddHandlers(this IServiceCollection services)
     {
+        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddScoped<IDispatcher, Dispatcher>();
+        return services;
+    }
 
-        return service;
+    public static IServiceCollection AddExpenseTrackerImplementation(this IServiceCollection services)
+    {
+        services.AddMapper();
+        services.AddHandlers();
+        return services;
     }
 }
