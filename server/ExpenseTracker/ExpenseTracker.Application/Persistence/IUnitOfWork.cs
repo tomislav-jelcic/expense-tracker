@@ -13,5 +13,5 @@ public interface IUnitOfWork
     /// </summary>
     /// <param name="ct"></param>
     /// <returns></returns>
-    public Task<int> SaveChangesAsync(CancellationToken ct = default!);
+    public Task<int> SaveChangesAsync();
 }

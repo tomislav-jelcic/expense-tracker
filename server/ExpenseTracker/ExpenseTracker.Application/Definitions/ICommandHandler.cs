@@ -7,10 +7,10 @@ namespace ExpenseTracker.Application.Definitions;
 /// <typeparam name="TResult"></typeparam>
 public interface ICommandHandler<TCommand, TResult> where TCommand : ICommand<TResult>
 {
-    Task<TResult> HandleAsync(TCommand command);
+    Task<TResult> HandleAsync(TCommand command, CancellationToken ct = default);
 }
 
 public interface ICommandHandler<TCommand> where TCommand : ICommand
 {
-    Task HandleAsync(TCommand command);
+    Task HandleAsync(TCommand command, CancellationToken ct = default);
 }

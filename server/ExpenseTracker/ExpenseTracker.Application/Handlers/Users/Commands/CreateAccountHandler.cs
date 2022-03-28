@@ -19,11 +19,10 @@ public class CreateAccountHandler : ICommandHandler<CreateAccount, AccountRespon
         _mapper = mapper;
     }
 
-    public async Task<AccountResponseDto> HandleAsync(CreateAccount request)
+    public async Task<AccountResponseDto> HandleAsync(CreateAccount request, CancellationToken ct = default)
     {
-
         var balance = _mapper.Map<Money>(request.Payload.Balance);
-        var owner = await _unitOfWork.Users.GetAsync(request.OwnerId);
+        var owner = await _unitOfWork.Users.GetAsync(request.OwnerId, ct);
 
         if (owner == null)
             throw new BadArgumentException("Specified user, for which the account is being made, has not been found");
@@ -34,7 +33,7 @@ public class CreateAccountHandler : ICommandHandler<CreateAccount, AccountRespon
 
         await _unitOfWork.SaveChangesAsync();
 
-        var newAccount = await _unitOfWork.Accounts.GetAsync(account.Id);
+        var newAccount = await _unitOfWork.Accounts.GetAsync(account.Id, ct);
 
         return _mapper.Map<AccountResponseDto>(newAccount!);
     }
