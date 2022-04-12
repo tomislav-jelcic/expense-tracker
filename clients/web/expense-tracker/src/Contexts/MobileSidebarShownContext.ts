@@ -1,4 +1,5 @@
 import React from "react";
+
 interface ISidebarContext {
   shown: boolean;
   toggleShown?: () => void;
@@ -7,5 +8,7 @@ interface ISidebarContext {
 const defaultState = {
   shown: false,
 };
-export const MobileSidebarShownContext =
+const MobileSidebarShownContext =
   React.createContext<ISidebarContext>(defaultState);
+
+export default MobileSidebarShownContext;

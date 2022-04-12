@@ -1,4 +1,5 @@
 import Keycloak, { KeycloakConfig, KeycloakInitOptions } from "keycloak-js";
+
 const keycloakConfig = {
   url: "http://localhost:5500/auth",
   realm: "main",

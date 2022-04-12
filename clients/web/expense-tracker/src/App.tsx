@@ -1,42 +1,44 @@
-import React, { useState } from "react";
-import { Router } from "./Routes";
+import React, { useMemo, useState } from "react";
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 import { BrowserRouter } from "react-router-dom";
+import Router from "./Routes";
 import Sidebar from "./Sidebar/Sidebar";
 import keycloak, { initOptions } from "./keycloack";
-import { Loading } from "./Components/Loading";
-import { Header } from "./Header/Header";
-import { MobileSidebarShownContext } from "./Contexts/MobileSidebarShownContext";
+import Loading from "./Components/Loading";
+import Header from "./Header/Header";
+import MobileSidebarShownContext from "./Contexts/MobileSidebarShownContext";
 
-function App() {
-
+const App = () => {
   const [shown, setShown] = useState(window.screen.width > 600); // just a hack so the menu stays closed on small screens
   const toggleShown = () => {
     setShown(!shown);
   };
 
-  return (
-    <React.Fragment>
-      <ReactKeycloakProvider authClient={keycloak} initOptions={initOptions} LoadingComponent={<Loading />}>
-        <Header name="Expense tracker" onHeaderIconClick={toggleShown} />
-        <BrowserRouter>
-          <div className="pt-12 lg:flex bg-whitesmoke bg-gray-50">
-            <div className="flex flex-col w-full py-2 overflow-y-auto border-b md:border-r md:border-solid md:border-enhance lg:h-screen lg:w-64 bg-white">
-              <MobileSidebarShownContext.Provider value={{
-                shown,
-                toggleShown
-              }}>
-                <Sidebar />
-              </MobileSidebarShownContext.Provider>
-            </div>
-            <div className="w-full h-full mr-2 my-8 overflow-y-auto">
-              <Router />
-            </div>
-          </div>
-        </BrowserRouter>
-      </ReactKeycloakProvider>
-    </React.Fragment>
+  const shownValues = useMemo(
+    () => ({ shown, toggleShown }),
+    [shown, toggleShown]
   );
-}
+  return (
+    <ReactKeycloakProvider
+      authClient={keycloak}
+      initOptions={initOptions}
+      LoadingComponent={<Loading />}
+    >
+      <Header name="Expense tracker" onHeaderIconClick={toggleShown} />
+      <BrowserRouter>
+        <div className="pt-12 lg:flex bg-whitesmoke bg-gray-50">
+          <div className="flex flex-col w-full py-2 overflow-y-auto border-b md:border-r md:border-solid md:border-enhance lg:h-screen lg:w-64 bg-white">
+            <MobileSidebarShownContext.Provider value={shownValues}>
+              <Sidebar />
+            </MobileSidebarShownContext.Provider>
+          </div>
+          <div className="w-full h-full mr-2 my-8 overflow-y-auto">
+            <Router />
+          </div>
+        </div>
+      </BrowserRouter>
+    </ReactKeycloakProvider>
+  );
+};
 
 export default App;

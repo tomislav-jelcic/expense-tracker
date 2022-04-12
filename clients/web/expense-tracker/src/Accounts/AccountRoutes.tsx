@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { AccountsRoot } from "./AccountsRoot";
+import AccountsRoot from "./AccountsRoot";
 
-export const AccountRootRoute = '/accounts';
+export const AccountRootRoute = "/accounts";
 
-export const AccountRouter = () => {
-    return (
-        <Routes>
-            <Route index element={<AccountsRoot />}></Route>
-        </Routes>
-    )
-}
+const AccountRouter = () => (
+  <Routes>
+    <Route index element={<AccountsRoot />} />
+  </Routes>
+);
+
+export default AccountRouter;
